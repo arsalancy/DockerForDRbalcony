@@ -1,0 +1,1 @@
+docker stop low_light_enchancement_service && docker rm low_light_enchancement_service

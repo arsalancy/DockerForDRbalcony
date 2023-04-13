@@ -1,0 +1,9 @@
+<ul>
+    {% for file in files %}
+    <li>
+        <a href="{{ (request.path if request.path != '/listall/' else '') + ('/' if request.path[-1] != '/' else '') + file }}">
+            {{ (request.path if request.path != '/listall/' else '') + ('/' if request.path[-1] != '/' else '') +  file }}
+        </a>
+    </li>
+    {% endfor %}
+</ul>

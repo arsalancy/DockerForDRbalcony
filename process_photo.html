@@ -1,0 +1,44 @@
+<html lang="en">
+<head>
+<style>
+.picture { width:150px; }
+.picture_img { width: 100%; object-fit: scale-down; horizontal-align: left;}
+</style>
+<title>Balcony recognition service</title>
+</head>
+
+<body>
+<h1>Recognition result</h1>
+                    <table>
+                    <tr>
+                        <td>
+                            Processed image, id# {{output_filename[1]|safe }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="{{ url_for('static', filename=output_filename[0])|safe }}">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="{{ url_for('feedback', feedback_type='Correct', file_id=output_filename[1])|safe }}">[Good job]</a>
+			</td>
+			<td>
+                            <a href="{{ url_for('feedback', feedback_type='Incorrect', file_id=output_filename[1])|safe }}">[Save for later]</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Recognized items:
+                        </td>
+                    </tr>
+{% for row in crops %}
+    <tr>
+        <td>{{row[1]|safe}} <div class="picture"><a href="{{ url_for('static', filename=row[0])|safe }}"><img class="picture_img" src="{{ url_for('static', filename=row[0])|safe }}"></a></div></td>
+    </tr>
+{% endfor %}
+
+                    </table>
+</body>
+</html>

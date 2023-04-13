@@ -1,0 +1,1 @@
+docker run -v $(pwd)/media:/project/yolov7/static/media -p 6067:6067 --env-file .env -dit --name balcony_recognition_service balcony_recognition
